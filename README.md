@@ -1,6 +1,6 @@
 # Change Log
-This is the Maleficarum Logger component. It uses monolog as it bases but provides initializers and builders for use in api/proxy/worker projects.
+This is the Maleficarum Auth component.
 
-## [1.0.0] - 2017-03-24
+## [1.0.0] - 2017-04-05
 ### Added
-- This is an initial release of the component - based on the code written by me and included inside the maleficarum API repository.
+- This is an initial release of the component.
