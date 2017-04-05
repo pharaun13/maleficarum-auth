@@ -1,15 +1,14 @@
 {
-	"name": "maleficarum/logger",
-	"description": "Maleficarum logger component.",
+	"name": "maleficarum/auth",
+	"description": "Maleficarum auth component.",
 	"license": "proprietary",
 	"require": {
 		"php": ">=7.0",
-		"maleficarum/ioc": "^2.0",
-		"monolog/monolog": "^1.21"
+		"maleficarum/ioc": "^2.0"
 	},
 	"autoload": {
 		"psr-4": {
-			"Maleficarum\\Logger\\": "src/Logger/"
+			"Maleficarum\\Auth\\": "src/Auth/"
 		}
 	},
 	"repositories": [
