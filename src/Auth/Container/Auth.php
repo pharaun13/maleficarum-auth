@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is container object that carries current auth data and provides access points to enact logic on that data.
+ * This is a container object that carries current auth data and provides access points to enact logic on that data.
  */
 declare (strict_types=1);
 
@@ -90,6 +90,7 @@ class Auth {
 	 */
 	public function setPrivs(array $privs) {
 		$this->privs = $privs;
+		return $this;
 	}
 
 	/**
@@ -104,6 +105,7 @@ class Auth {
 	 */
 	public function setData(array $data) {
 		$this->data = $data;
+		return $this;
 	}
 	
 	/**
@@ -118,6 +120,7 @@ class Auth {
 	 */
 	public function setId(string $id) {
 		$this->id = $id;
+		return $this;
 	}
 	
 	/**
@@ -132,6 +135,7 @@ class Auth {
 	 */
 	public function setSecret(string $secret) {
 		$this->secret = $secret;
+		return $this;
 	}
 
 	/**
@@ -146,6 +150,7 @@ class Auth {
 	 */
 	public function setChecker(\Maleficarum\Auth\Process\Privilege\Checker $checker) {
 		$this->checker = $checker;
+		return $this;
 	}
 	
 	/* ------------------------------------ Setters & Getters END -------------------------------------- */

@@ -31,13 +31,14 @@ class Initializer {
 				
 				/** Data refresh stage */
 				if (isset($dep['Maleficarum\Config']) && isset($dep['Maleficarum\Config']['auth']['refreshing_mode'])) {
-					/** Redis */
-					if ($dep['Maleficarum\Config']['auth']['refreshing_mode']['type'] === 'Redis') {
-						$dep['Maleficarum\Redis']->connect()->select($dep['Maleficarum\Config']['auth']['refreshing_mode']['database']);
-						$data = json_decode((string)$dep['Maleficarum\Redis']->get($auth->getId()), true);
-						isset($data['token']) and $auth->setSecret($data['token']);
-						isset($data['privileges']) and $auth->setPrivs($data['privileges']);
-					}
+					$provider = \Maleficarum\Ioc\Container::get($dep['Maleficarum\Config']['auth']['refreshing_mode']['type']);
+					if (!$provider instanceof \Maleficarum\Auth\Process\Provider\Provider) throw new \LogicException('Invalid auth provider type specified.');
+					
+					$provider->refresh($auth->getId());
+					$auth
+						->setSecret($provider->getSecret())
+						->setData($provider->getData())
+						->setPrivs($provider->getPrivs());
 				}
 				
 				return $auth;
