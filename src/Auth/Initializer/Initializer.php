@@ -34,7 +34,7 @@ class Initializer {
 					/** Redis */
 					if ($dep['Maleficarum\Config']['auth']['refreshing_mode']['type'] === 'Redis') {
 						$dep['Maleficarum\Redis']->connect()->select($dep['Maleficarum\Config']['auth']['refreshing_mode']['database']);
-						$data = json_decode($dep['Maleficarum\Redis']->get($auth->getId()), true);
+						$data = json_decode((string)$dep['Maleficarum\Redis']->get($auth->getId()), true);
 						isset($data['token']) and $auth->setSecret($data['token']);
 						isset($data['privileges']) and $auth->setPrivs($data['privileges']);
 					}
