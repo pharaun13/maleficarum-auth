@@ -1,6 +1,10 @@
 # Change Log
 This is the Maleficarum Auth component.
 
+## [2.0.1] - 2017-04-07
+### Changed
+- Unified method/parameter naming.
+
 ## [2.0.0] - 2017-04-07
 ### Changed
 - Removed provider logic from auth initializer and replaced it with project specific implementations of the Provider interface.

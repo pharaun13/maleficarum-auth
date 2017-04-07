@@ -15,7 +15,7 @@ class Auth {
 	 * Internal storage for current accessor privileges.
 	 * @var array
 	 */
-	private $privs = [];
+	private $privileges = [];
 
 	/**
 	 * Internal storage for accessor specific data.
@@ -70,7 +70,7 @@ class Auth {
 	 */
 	public function isAuthorized(string $system = '*', string $type = '*', string $id = '*', string $component = '*', int $flag = -1) {
 		return $this->getChecker()
-			->setPrivileges($this->getPrivs())
+			->setPrivileges($this->getPrivileges())
 			->check($system, $type, $id, $component, $flag);
 	}
 	
@@ -81,15 +81,15 @@ class Auth {
 	/**
 	 * @return array
 	 */
-	public function getPrivs() {
-		return $this->privs;
+	public function getPrivileges() {
+		return $this->privileges;
 	}
 
 	/**
-	 * @param array $privs
+	 * @param array $privileges
 	 */
-	public function setPrivs(array $privs) {
-		$this->privs = $privs;
+	public function setPrivileges(array $privileges) {
+		$this->privileges = $privileges;
 		return $this;
 	}
 

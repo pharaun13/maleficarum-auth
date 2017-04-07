@@ -35,5 +35,5 @@ interface Provider {
 	 * 
 	 * @return array
 	 */
-	public function getPrivs() : array;
+	public function getPrivileges() : array;
 }

@@ -38,7 +38,7 @@ class Initializer {
 					$auth
 						->setSecret($provider->getSecret())
 						->setData($provider->getData())
-						->setPrivs($provider->getPrivs());
+						->setPrivileges($provider->getPrivileges());
 				}
 				
 				return $auth;
