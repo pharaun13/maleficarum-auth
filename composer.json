@@ -3,7 +3,7 @@
 	"description": "Maleficarum auth component.",
 	"license": "proprietary",
 	"require": {
-		"php": ">=7.0",
+		"php": "^7.1",
 		"maleficarum/ioc": "^2.0"
 	},
 	"autoload": {
