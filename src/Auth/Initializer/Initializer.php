@@ -38,7 +38,7 @@ class Initializer {
                         }
 
                         $authId = $session->get($dep['Maleficarum\Config']['auth']['incoming_mode']['name']);
-                        isset($authId) ? $auth->setId($authId) : $auth->setId('');
+                        isset($authId) and $auth->setId($authId);
                     }
                 }
 
@@ -49,11 +49,13 @@ class Initializer {
                         throw new \LogicException('Invalid auth provider type specified.');
                     }
 
-                    $provider->refresh($auth->getId());
-                    $auth
-                        ->setSecret($provider->getSecret())
-                        ->setData($provider->getData())
-                        ->setPrivileges($provider->getPrivileges());
+                    if ($auth->getId()) {
+                        $provider->refresh($auth->getId());
+                        $auth
+                            ->setSecret($provider->getSecret())
+                            ->setData($provider->getData())
+                            ->setPrivileges($provider->getPrivileges());
+                    }
                 }
 
                 return $auth;
