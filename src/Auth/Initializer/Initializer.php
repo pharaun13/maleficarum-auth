@@ -29,6 +29,17 @@ class Initializer {
                     if ($dep['Maleficarum\Config']['auth']['incoming_mode']['type'] === 'HMAC') {
                         $auth->setId($dep['Maleficarum\Request']->getHeader($dep['Maleficarum\Config']['auth']['incoming_mode']['name']));
                     }
+
+                    /** SESSION */
+                    if ($dep['Maleficarum\Config']['auth']['incoming_mode']['type'] === 'Session') {
+                        $session = \Maleficarum\Ioc\Container::get($dep['Maleficarum\Config']['session']['type']);
+                        if (!$session instanceof \Maleficarum\Auth\Process\Session\Session) {
+                            throw new \LogicException('Invalid session type specified.');
+                        }
+
+                        $authId = $session->get($dep['Maleficarum\Config']['auth']['incoming_mode']['name']);
+                        isset($authId) ? $auth->setId($authId) : $auth->setId('');
+                    }
                 }
 
                 /** Data refresh stage */

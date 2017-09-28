@@ -1,6 +1,10 @@
 # Change Log
 This is the Maleficarum Auth component.
 
+## [3.0.1] - 2017-09-28
+### Changed
+- Support `Session` for incoming data stage
+
 ## [3.0.0] - 2017-08-01
 ### Changed
 - Make use of nullable types provided in PHP 7.1 (http://php.net/manual/en/migration71.new-features.php)
