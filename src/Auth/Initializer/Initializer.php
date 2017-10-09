@@ -32,12 +32,12 @@ class Initializer {
 
                     /** SESSION */
                     if ($dep['Maleficarum\Config']['auth']['incoming_mode']['type'] === 'Session') {
-                        $session = \Maleficarum\Ioc\Container::get($dep['Maleficarum\Config']['session']['type']);
-                        if (!$session instanceof \Maleficarum\Auth\Process\Storage\Storage) {
+                        $storage = \Maleficarum\Ioc\Container::get($dep['Maleficarum\Config']['session']['type']);
+                        if (!$storage instanceof \Maleficarum\Auth\Process\Storage\Storage) {
                             throw new \LogicException('Invalid storage type specified.');
                         }
 
-                        $authId = $session->get($dep['Maleficarum\Config']['auth']['incoming_mode']['name']);
+                        $authId = $storage->get($dep['Maleficarum\Config']['auth']['incoming_mode']['name']);
                         isset($authId) and $auth->setId($authId);
                     }
                 }
