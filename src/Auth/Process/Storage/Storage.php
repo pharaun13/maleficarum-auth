@@ -4,7 +4,7 @@
  */
 declare (strict_types=1);
 
-namespace Maleficarum\Auth\Process\Session;
+namespace Maleficarum\Auth\Process\Storage;
 
 interface Storage {
     /**
