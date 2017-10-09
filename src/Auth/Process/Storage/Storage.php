@@ -6,9 +6,9 @@ declare (strict_types=1);
 
 namespace Maleficarum\Auth\Process\Session;
 
-interface Session {
+interface Storage {
     /**
-     * Get a value from the session
+     * Get a value from the storage
      *
      * @param $name
      *
