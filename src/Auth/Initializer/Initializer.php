@@ -29,6 +29,17 @@ class Initializer {
                     if ($dep['Maleficarum\Config']['auth']['incoming_mode']['type'] === 'HMAC') {
                         $auth->setId($dep['Maleficarum\Request']->getHeader($dep['Maleficarum\Config']['auth']['incoming_mode']['name']));
                     }
+
+                    /** SESSION */
+                    if ($dep['Maleficarum\Config']['auth']['incoming_mode']['type'] === 'Session') {
+                        $storage = \Maleficarum\Ioc\Container::get($dep['Maleficarum\Config']['session']['type']);
+                        if (!$storage instanceof \Maleficarum\Auth\Process\Storage\Storage) {
+                            throw new \LogicException('Invalid storage type specified.');
+                        }
+
+                        $authId = $storage->get($dep['Maleficarum\Config']['auth']['incoming_mode']['name']);
+                        isset($authId) and $auth->setId($authId);
+                    }
                 }
 
                 /** Data refresh stage */
@@ -38,11 +49,13 @@ class Initializer {
                         throw new \LogicException('Invalid auth provider type specified.');
                     }
 
-                    $provider->refresh($auth->getId());
-                    $auth
-                        ->setSecret($provider->getSecret())
-                        ->setData($provider->getData())
-                        ->setPrivileges($provider->getPrivileges());
+                    if ($auth->getId()) {
+                        $provider->refresh($auth->getId());
+                        $auth
+                            ->setSecret($provider->getSecret())
+                            ->setData($provider->getData())
+                            ->setPrivileges($provider->getPrivileges());
+                    }
                 }
 
                 return $auth;
