@@ -1,20 +1,14 @@
 {
-	"name": "maleficarum/auth",
-	"description": "Maleficarum auth component.",
-	"license": "proprietary",
-	"require": {
-		"php": "^7.1",
-		"maleficarum/ioc": "^2.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"Maleficarum\\Auth\\": "src/Auth/"
-		}
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:pharaun13/maleficarum-ioc.git"
-		}
-	]
+    "name": "maleficarum/auth",
+    "description": "Maleficarum auth component.",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.2",
+        "maleficarum/ioc": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maleficarum\\Auth\\": "src/Auth/"
+        }
+    }
 }

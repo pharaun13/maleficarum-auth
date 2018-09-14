@@ -1,6 +1,11 @@
 # Change Log
 This is the Maleficarum Auth component.
 
+## [4.0.0] - 2018-09-13
+### Changed
+- Bump IoC component to version 3.x
+- Remove repositories section from composer file
+
 ## [3.0.1] - 2017-09-28
 ### Changed
 - Support `Session` for incoming data stage

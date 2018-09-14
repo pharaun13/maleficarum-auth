@@ -20,7 +20,7 @@ class Initializer {
         is_array($builders) or $builders = [];
 
         if (!isset($builders['auth']['skip'])) {
-            \Maleficarum\Ioc\Container::register('Maleficarum\Auth\Container\Auth', function ($dep) {
+            \Maleficarum\Ioc\Container::registerBuilder('Maleficarum\Auth\Container\Auth', function ($dep) {
                 $auth = new \Maleficarum\Auth\Container\Auth(\Maleficarum\Ioc\Container::get('Maleficarum\Auth\Process\Privilege\Checker'));
 
                 /** Incoming data stage */
@@ -63,7 +63,7 @@ class Initializer {
         }
 
         $auth = \Maleficarum\Ioc\Container::get('Maleficarum\Auth\Container\Auth');
-        \Maleficarum\Ioc\Container::registerDependency('Maleficarum\Auth', $auth);
+        \Maleficarum\Ioc\Container::registerShare('Maleficarum\Auth', $auth);
 
         return __METHOD__;
     }
